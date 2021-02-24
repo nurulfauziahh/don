@@ -2,14 +2,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hmtif/donasi/details/nominal.dart';
+import 'package:hmtif/donasi/details/transaksi.dart';
 import 'package:hmtif/donasi/info_screen.dart';
 import 'package:hmtif/Animation/FadeAnimation.dart';
 
 class DetailDonasi extends StatefulWidget {
   // final DocumentSnapshot MyStudent;
   // DetailDonasi({this.MyStudent});
-  final String namaDonasi, deskripsi, documentId, kategori, gambarDonasi,danaDonasi;
+  final String namaDonasi,
+      deskripsi,
+      documentId,
+      kategori,
+      gambarDonasi,
+      danaDonasi;
   // final int danaDonasi;
   DetailDonasi({
     // @required this.isEdit,
@@ -47,14 +52,11 @@ class _DetailDonasiState extends State<DetailDonasi> {
                     child: FadeAnimation(
                         1,
                         Container(
-                           child: Image.network(widget.gambarDonasi.toString(),
-                                                                      // width: 300,
-                                                                        height: 150,
-                                                                        fit:BoxFit.fill
-
-                    ),
-                        )
-                        ),
+                          child: Image.network(widget.gambarDonasi.toString(),
+                              // width: 300,
+                              height: 150,
+                              fit: BoxFit.fill),
+                        )),
                   ),
                 ],
               ),
@@ -84,10 +86,11 @@ class _DetailDonasiState extends State<DetailDonasi> {
                         Row(
                           children: <Widget>[
                             new Text(
-                              "Rp. 2000000 dana terkumpul dari "+ widget.danaDonasi,
-                              style: TextStyle(color: Colors.grey, fontSize: 10),
+                              "Rp. 2000000 dana terkumpul dari " +
+                                  widget.danaDonasi,
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 10),
                             ),
-                            
                           ],
                         )),
                     new Padding(padding: EdgeInsets.all(3)),
@@ -122,7 +125,7 @@ class _DetailDonasiState extends State<DetailDonasi> {
                         Stack(
                           children: <Widget>[
                             new Text(
-                             "kategori : "+widget.kategori,
+                              "kategori : " + widget.kategori,
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 10),
                             )
@@ -149,19 +152,19 @@ class _DetailDonasiState extends State<DetailDonasi> {
                         )),
                     new Padding(padding: EdgeInsets.fromLTRB(0, 20, 0, 0)),
 
-                  FadeAnimation(
+                    FadeAnimation(
                         2,
                         GestureDetector(
                           onTap: () {
-                                           
-                                                                                    Navigator.of(context).push(
-                                                                                        new MaterialPageRoute(
-                                                                                            builder:
-                                                                                                (BuildContext context) =>
-                                                                                                    new Nominal(documentId: widget.documentId, namaDonasi: widget.namaDonasi, deskripsi: widget.deskripsi, kategori: widget.kategori, gambarDonasi: widget.gambarDonasi,)));
-
-                                          
-                                
+                            Navigator.of(context).push(new MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    new Transaksi(
+                                      documentId: widget.documentId,
+                                      namaDonasi: widget.namaDonasi,
+                                      deskripsi: widget.deskripsi,
+                                      kategori: widget.kategori,
+                                      gambarDonasi: widget.gambarDonasi,
+                                    )));
                           },
                           child: Container(
                             height: 50,
@@ -180,9 +183,7 @@ class _DetailDonasiState extends State<DetailDonasi> {
                               ),
                             ),
                           ),
-                        )
-                        ),
-
+                        )),
 
 //BUTTON
                     // FadeAnimation(
@@ -252,9 +253,8 @@ class _DetailDonasiState extends State<DetailDonasi> {
                     //       ),
                     //     )
                     //     ),
- // END BUTTON 
-                  ]
-                  ),
+                    // END BUTTON
+                  ]),
             ),
             // FadeAnimation(
             //     1.8,
@@ -267,5 +267,3 @@ class _DetailDonasiState extends State<DetailDonasi> {
     );
   }
 }
-
-

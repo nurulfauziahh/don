@@ -13,11 +13,11 @@ import 'package:hmtif/donasi/info_screen.dart';
 import 'package:hmtif/donasi/widgets/rounded_container.dart';
 import 'package:intl/intl.dart';
 
-class Nominal extends StatefulWidget {
+class Transaksi extends StatefulWidget {
   final DetailDonasi data;
 final String namaDonasi, deskripsi, shortDeskripsi, gambarDonasi, documentId, kategori;
   final int danaDonasi;
-  Nominal({
+  Transaksi({
     // @required this.isEdit,
     @required this.documentId,
     @required this.namaDonasi,
@@ -30,13 +30,13 @@ final String namaDonasi, deskripsi, shortDeskripsi, gambarDonasi, documentId, ka
 
   });
 @override
-  _NominalState createState() => _NominalState();
+  _TransaksiState createState() => _TransaksiState();
   
 
 }
 
   
-class _NominalState extends State<Nominal> {
+class _TransaksiState extends State<Transaksi> {
   int totalAmount = 0;
   var txt = TextEditingController();
   @override
