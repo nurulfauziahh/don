@@ -324,20 +324,25 @@ class _TransaksiState extends State<Transaksi> {
                 children: <Widget>[
                   LimitedBox(
                     maxWidth: 150.0,
-                    child: TextField(
+                    child: TextFormField(
                       controller: txt,
                       keyboardType: TextInputType.number,
-                      inputFormatters: [
-                        CurrencyTextInputFormatter(
-                            locale: 'id', decimalDigits: 0, symbol: 'Rp. ')
-                      ],
+                      //Tidak bisa insert pakai currency
+                      // inputFormatters: [
+                      //   CurrencyTextInputFormatter(
+                      //       locale: 'id', decimalDigits: 0, symbol: 'Rp. ')
+                      // ],
                       decoration: InputDecoration(
                         hintText: "Masukkan nominal",
                       ),
-                      onChanged: (String totalAmount) {
-                        // setState(() {
-                        //   totalAmount = num.parse(value);
-                        // });
+                      // onChanged: (String totalAmount) {
+                      //   // setState(() {
+                      //   //   totalAmount = num.parse(value);
+                      //   // });
+                      //   getDonasiTotalAmount(totalAmount);
+                      // },
+                      onChanged: (String totalAmount){
+                        int.parse(totalAmount);
                         getDonasiTotalAmount(totalAmount);
                       },
                     ),
@@ -388,7 +393,7 @@ class _TransaksiState extends State<Transaksi> {
                       "danaDonasi" : danaDonasi,
                       "kategori" : kategori,
                       "gambarDonasi" : gambarDonasi,
-                      "danaTerkumpul": danaTerkumpul + 10,
+                      "danaTerkumpul": danaTerkumpul + totalAmount,
                     };
 
                     documentReference
