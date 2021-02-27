@@ -23,4 +23,15 @@ class ModelData{
       print("$namaDonasi created");
     });
   }
+
+    Future<DocumentSnapshot> saveData(String nomor,Map<String, dynamic> donasi) async {
+    await Firebase.initializeApp();
+    DocumentReference documentReference =
+        Firestore.instance.collection("Donatur").document();
+
+
+    documentReference.setData(donasi).whenComplete(() {
+      print("$nomor created");
+    });
+  }
 }

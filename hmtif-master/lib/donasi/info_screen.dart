@@ -21,7 +21,7 @@ class InfoScreen extends StatefulWidget {
       gambarDonasi,
       documentId,
       kategori;
-  final int danaDonasi;
+  final int danaDonasi, danaTerkumpul;
   InfoScreen({
     // @required this.isEdit,
     @required this.documentId,
@@ -29,6 +29,7 @@ class InfoScreen extends StatefulWidget {
     @required this.deskripsi,
     @required this.shortDeskripsi,
     @required this.danaDonasi,
+    @required this.danaTerkumpul,
     @required this.gambarDonasi,
     @required this.kategori,
   });
@@ -157,7 +158,6 @@ class _InfoScreenState extends State<InfoScreen> {
                                   return FadeAnimation(
                                     1.8,
                                     GestureDetector(
-
                                       child: InkWell(
                                         child: Container(
                                           child: Padding(
@@ -197,6 +197,8 @@ class _InfoScreenState extends State<InfoScreen> {
                                                                       'deskripsi'],
                                                                   danaDonasi: task[
                                                                       'danaDonasi'],
+                                                                      danaTerkumpul: task[
+                                                                      'danaTerkumpul'],
                                                                   gambarDonasi:
                                                                       task[
                                                                           'gambarDonasi'],
@@ -206,7 +208,6 @@ class _InfoScreenState extends State<InfoScreen> {
                                                               }),
                                                             );
                                                           },
-
                                                           child: Column(
                                                             children: <Widget>[
                                                               CampCard(
@@ -214,16 +215,23 @@ class _InfoScreenState extends State<InfoScreen> {
                                                                     .data()[
                                                                         'gambarDonasi']
                                                                     .toString(),
-                                                                title: documentSnapshot.data()['namaDonasi'],
-                                                                subtitle: "Rp. "+documentSnapshot.data()['danaDonasi'].toString(),
+                                                                title: documentSnapshot
+                                                                        .data()[
+                                                                    'namaDonasi'],
+                                                                subtitle: "Rp. " + documentSnapshot
+                                                                        .data()[
+                                                                            'danaTerkumpul']
+                                                                        .toString() +" Terkumpul dari Rp."+
+                                                                    documentSnapshot
+                                                                        .data()[
+                                                                            'danaDonasi']
+                                                                        .toString(),
                                                               ),
                                                             ],
                                                           ),
-
                                                         ),
                                                       ),
                                                     ),
-
                                                   ],
                                                 ),
                                               ),
@@ -305,5 +313,3 @@ class SymptomCard extends StatelessWidget {
     );
   }
 }
-
-

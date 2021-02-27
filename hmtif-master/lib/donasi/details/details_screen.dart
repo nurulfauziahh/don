@@ -13,8 +13,8 @@ class DetailDonasi extends StatefulWidget {
       deskripsi,
       documentId,
       kategori,
-      gambarDonasi,
-      danaDonasi;
+      gambarDonasi;
+  final int danaDonasi, danaTerkumpul;
   // final int danaDonasi;
   DetailDonasi({
     // @required this.isEdit,
@@ -22,6 +22,7 @@ class DetailDonasi extends StatefulWidget {
     @required this.namaDonasi,
     @required this.deskripsi,
     @required this.danaDonasi,
+    @required this.danaTerkumpul,
     @required this.kategori,
     @required this.gambarDonasi,
   });
@@ -86,8 +87,8 @@ class _DetailDonasiState extends State<DetailDonasi> {
                         Row(
                           children: <Widget>[
                             new Text(
-                              "Rp. 2000000 dana terkumpul dari " +
-                                  widget.danaDonasi,
+                              "Rp." +  widget.danaTerkumpul.toString() +" dana terkumpul dari Rp."+
+                                  widget.danaDonasi.toString(),
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 10),
                             ),
@@ -161,6 +162,8 @@ class _DetailDonasiState extends State<DetailDonasi> {
                                     new Transaksi(
                                       documentId: widget.documentId,
                                       namaDonasi: widget.namaDonasi,
+                                      danaDonasi: widget.danaDonasi,
+                                      danaTerkumpul: widget.danaTerkumpul,
                                       deskripsi: widget.deskripsi,
                                       kategori: widget.kategori,
                                       gambarDonasi: widget.gambarDonasi,

@@ -4,15 +4,15 @@ import 'package:hmtif/donasi/model/Model.dart';
 
 class ControllerData {
   ModelData modelData = new ModelData();
-  // Future<DocumentSnapshot> createData(String name, String deskripsi) async {
-  //   await Firebase.initializeApp();
+  Future<DocumentSnapshot> createData(String nomor, int totalAmount) async {
+    await Firebase.initializeApp();
 
-  //   Map<String, dynamic> aspirasi = {
-  //     "name": name,
-  //     "deskripsi": deskripsi,
-  //   };
-  //   modelDatabase.saveData(name, aspirasi);
-  // }
+    Map<String, dynamic> donasi = {
+      "nomor": nomor,
+      "totalAmount": totalAmount,
+    };
+    modelData.saveData(nomor, donasi);
+  }
 
   // Future<DocumentSnapshot> post(
   //     String name, String deskripsi, String documentId) async {
