@@ -62,204 +62,250 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var delay = 1.5;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         controller: controller,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
-            Widget>[
-          Myheader(
-            image: "assets/images/1.png",
-            textTop: "Berkah nya",
-            textBottom: "Donasi",
-            offset: offset,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "Category",
-                  style: kTitleTextstyle,
-                ),
-                SizedBox(height: 10),
-                CampaignCategories(), //CARD CATEGORY
-                SizedBox(height: 10),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Myheader(
+                image: "assets/images/1.png",
+                textTop: "Berkah nya",
+                textBottom: "Donasi",
+                offset: offset,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "Category",
+                      style: kTitleTextstyle,
+                    ),
+                    SizedBox(height: 10),
+                    CampaignCategories(), //CARD CATEGORY
+                    SizedBox(height: 10),
 
 // berdasarkan kategori belum jalan
 
-                //   Row(
-                //       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: <Widget>[
-                //       SizedBox(width: 25),
-                //         Row(
-                //           children: <Widget>[
-                //          GestureDetector(
-                //              onTap: () {
-                //   Navigator.of(context).push(
-                //     new MaterialPageRoute(
-                //       builder: (BuildContext context) =>
-                //           new KatAkademik()));
-                // },
-                //          ),
-                //         SymptomCard(
-                //         image: "assets/images/kSosial.png",
-                //         title: "Sosial",
-                //       ),
-                //         ],
-                //         ),
+                    //   Row(
+                    //       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: <Widget>[
+                    //       SizedBox(width: 25),
+                    //         Row(
+                    //           children: <Widget>[
+                    //          GestureDetector(
+                    //              onTap: () {
+                    //   Navigator.of(context).push(
+                    //     new MaterialPageRoute(
+                    //       builder: (BuildContext context) =>
+                    //           new KatAkademik()));
+                    // },
+                    //          ),
+                    //         SymptomCard(
+                    //         image: "assets/images/kSosial.png",
+                    //         title: "Sosial",
+                    //       ),
+                    //         ],
+                    //         ),
 
-                //       SizedBox(width: 10,),
+                    //       SizedBox(width: 10,),
 
-                //       Row(
-                //           children: <Widget>[
-                //           FlatButton(onPressed: () {
-                //             Navigator.push(
-                //               context,
-                //              new  MaterialPageRoute(builder: (context) => new KatAkademik()),
-                //             );
-                //           }),
-                //          SymptomCard(
-                //         image: "assets/images/kAkademik.png",
-                //         title: "Akademik",
-                //         isActive: true,
-                //       ),
-                //         ],
-                //         ),
+                    //       Row(
+                    //           children: <Widget>[
+                    //           FlatButton(onPressed: () {
+                    //             Navigator.push(
+                    //               context,
+                    //              new  MaterialPageRoute(builder: (context) => new KatAkademik()),
+                    //             );
+                    //           }),
+                    //          SymptomCard(
+                    //         image: "assets/images/kAkademik.png",
+                    //         title: "Akademik",
+                    //         isActive: true,
+                    //       ),
+                    //         ],
+                    //         ),
 
-                //      SizedBox(width: 10,),
-                //     ],
-                //   ),
+                    //      SizedBox(width: 10,),
+                    //     ],
+                    //   ),
 
-                SizedBox(height: 20),
-                Text("Recent", style: kTitleTextstyle),
+                    SizedBox(height: 20),
+                    Text("Recent", style: kTitleTextstyle),
 
-                SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      SingleChildScrollView(
-                        controller: controller,
-                        child: StreamBuilder(
-                          stream: Firestore.instance
-                              .collection("Donasi")
-                              .snapshots(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return ListView.builder(
-                                controller: controller,
-                                shrinkWrap: true,
-                                itemCount: snapshot.data.documents.length,
-                                itemBuilder: (context, index) {
-                                  DocumentSnapshot documentSnapshot =
-                                      snapshot.data.documents[index];
-                                  Map<String, dynamic> task =
-                                      documentSnapshot.data();
-                                  return FadeAnimation(
-                                    1.8,
-                                    GestureDetector(
-                                      child: InkWell(
-                                        child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 10),
+                    SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          SingleChildScrollView(
+                            controller: controller,
+                            child: StreamBuilder(
+                              stream: Firestore.instance
+                                  .collection("Donasi")
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasData) {
+                                  return ListView.builder(
+                                    controller: controller,
+                                    shrinkWrap: true,
+                                    itemCount: snapshot.data.documents.length,
+                                    itemBuilder: (context, index) {
+                                      DocumentSnapshot documentSnapshot =
+                                          snapshot.data.documents[index];
+                                      Map<String, dynamic> task =
+                                          documentSnapshot.data();
+                                      return FadeAnimation(
+                                        1.8,
+                                        GestureDetector(
+                                          child: InkWell(
                                             child: Container(
-                                              child: SizedBox(
-                                                child: Stack(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  children: <Widget>[
-                                                    Container(
-                                                      margin:
-                                                          EdgeInsets.all(8.0),
-                                                      child: Card(
-                                                        shape: RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius.all(
-                                                                    Radius.circular(
-                                                                        8.0))),
-                                                        child: InkWell(
-                                                          onTap: () async {
-                                                            bool result =
-                                                                await Navigator
-                                                                    .push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder:
-                                                                      (context) {
-                                                                return DetailDonasi(
-                                                                  documentId:
-                                                                      documentSnapshot
-                                                                          .documentID,
-                                                                  namaDonasi: task[
-                                                                      'namaDonasi'],
-                                                                  deskripsi: task[
-                                                                      'deskripsi'],
-                                                                  danaDonasi: task[
-                                                                      'danaDonasi'],
-                                                                      danaTerkumpul: task[
-                                                                      'danaTerkumpul'],
-                                                                  gambarDonasi:
-                                                                      task[
-                                                                          'gambarDonasi'],
-                                                                  kategori: task[
-                                                                      'kategori'],
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    bottom: 10),
+                                                child: Container(
+                                                  child: SizedBox(
+                                                    child: Stack(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      children: <Widget>[
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.all(
+                                                                  8.0),
+                                                          child: Card(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius: BorderRadius
+                                                                    .all(Radius
+                                                                        .circular(
+                                                                            8.0))),
+                                                            child: InkWell(
+                                                              onTap: () async {
+                                                                bool result =
+                                                                    await Navigator
+                                                                        .push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder:
+                                                                          (context) {
+                                                                    return DetailDonasi(
+                                                                      documentId:
+                                                                          documentSnapshot
+                                                                              .documentID,
+                                                                      namaDonasi:
+                                                                          task[
+                                                                              'namaDonasi'],
+                                                                      deskripsi:
+                                                                          task[
+                                                                              'deskripsi'],
+                                                                      danaDonasi:
+                                                                          task[
+                                                                              'danaDonasi'],
+                                                                      danaTerkumpul:
+                                                                          task[
+                                                                              'danaTerkumpul'],
+                                                                      gambarDonasi:
+                                                                          task[
+                                                                              'gambarDonasi'],
+                                                                      kategori:
+                                                                          task[
+                                                                              'kategori'],
+                                                                    );
+                                                                  }),
                                                                 );
-                                                              }),
-                                                            );
-                                                          },
-                                                          child: Column(
-                                                            children: <Widget>[
-                                                              CampCard(
-                                                                image: documentSnapshot
-                                                                    .data()[
-                                                                        'gambarDonasi']
-                                                                    .toString(),
-                                                                title: documentSnapshot
-                                                                        .data()[
-                                                                    'namaDonasi'],
-                                                                subtitle: "Rp. " + documentSnapshot
-                                                                        .data()[
-                                                                            'danaTerkumpul']
-                                                                        .toString() +" Terkumpul dari Rp."+
-                                                                    documentSnapshot
-                                                                        .data()[
-                                                                            'danaDonasi']
-                                                                        .toString(),
+                                                              },
+                                                              child: Column(
+                                                                children: <
+                                                                    Widget>[
+                                                                  
+                                                                  CampCard(
+                                                                      image: documentSnapshot
+                                                                          .data()[
+                                                                              'gambarDonasi']
+                                                                          .toString(),
+                                                                      title: documentSnapshot
+                                                                              .data()[
+                                                                          'namaDonasi'],
+                                                                      subtitle: "Rp. " +
+                                                                          documentSnapshot
+                                                                              .data()[
+                                                                                  'danaTerkumpul']
+                                                                              .toString() +
+                                                                          " Terkumpul dari Rp." +
+                                                                          documentSnapshot
+                                                                              .data()['danaDonasi']
+                                                                              .toString()),
+                                                                  Stack(
+                                                                    children: <
+                                                                        Widget>[
+                                                                      Container(
+                                                                        width:
+                                                                            350,
+                                                                        height:
+                                                                            10,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.grey[200],
+                                                                            borderRadius: BorderRadius.circular(5)),
+                                                                      ),
+                                                                      Material(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(5),
+                                                                        child:
+                                                                            AnimatedContainer(
+                                                                          height:
+                                                                              10,
+                                                                          width:
+                                                                              documentSnapshot
+                                                                              .data()[
+                                                                                  'danaTerkumpul'] * 0.5,
+                                                                          duration:
+                                                                              Duration(milliseconds: 500),
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.lightGreen,
+                                                                              borderRadius: BorderRadius.circular(5)),
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                          height:
+                                                                              20),
+                                                                    ],
+                                                                  )
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
+                                      );
+                                    },
                                   );
-                                },
-                              );
-                            } else {
-                              return Container();
-                            }
-                          },
-                        ),
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+
+                    // Container(
+
+                    // ),
+                  ],
                 ),
-
-                // Container(
-
-                // ),
-              ],
-            ),
-          ),
-        ]),
+              ),
+            ]),
       ),
     );
   }

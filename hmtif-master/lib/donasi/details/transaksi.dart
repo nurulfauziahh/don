@@ -110,21 +110,18 @@ class _TransaksiState extends State<Transaksi> {
                         children: <Widget>[
                           FlatButton(
                               child: Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp. ',
-                                          decimalDigits: 0)
-                                      .format(10000),
+                                 "Rp. 10.000",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   )),
                               onPressed: () {
-                                txt.text = NumberFormat.currency(
-                                        locale: 'id',
-                                        symbol: 'Rp. ',
-                                        decimalDigits: 0)
-                                    .format(10000);
+                                // txt.text = NumberFormat.currency(
+                                //         locale: 'id',
+                                //         symbol: 'Rp. ',
+                                //         decimalDigits: 0)
+                                //     .format(10000);
+                                txt.text = "10000";
                               }),
                         ],
                       ),
@@ -141,21 +138,13 @@ class _TransaksiState extends State<Transaksi> {
                         children: <Widget>[
                           FlatButton(
                               child: Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp. ',
-                                          decimalDigits: 0)
-                                      .format(20000),
+                                  "Rp. 20.000",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   )),
                               onPressed: () {
-                                txt.text = NumberFormat.currency(
-                                        locale: 'id',
-                                        symbol: 'Rp. ',
-                                        decimalDigits: 0)
-                                    .format(20000);
+                                txt.text = "20000";
                               }),
                         ],
                       ),
@@ -179,21 +168,18 @@ class _TransaksiState extends State<Transaksi> {
                         children: <Widget>[
                           FlatButton(
                               child: Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp. ',
-                                          decimalDigits: 0)
-                                      .format(50000),
+                                  // NumberFormat.currency(
+                                  //         locale: 'id',
+                                  //         symbol: 'Rp. ',
+                                  //         decimalDigits: 0)
+                                  //     .format(50000),
+                                  "Rp.50.000",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   )),
                               onPressed: () {
-                                txt.text = NumberFormat.currency(
-                                        locale: 'id',
-                                        symbol: 'Rp. ',
-                                        decimalDigits: 0)
-                                    .format(50000);
+                                txt.text = "50000";
                               }),
                         ],
                       ),
@@ -210,21 +196,13 @@ class _TransaksiState extends State<Transaksi> {
                         children: <Widget>[
                           FlatButton(
                               child: Text(
-                                  NumberFormat.currency(
-                                          locale: 'id',
-                                          symbol: 'Rp. ',
-                                          decimalDigits: 0)
-                                      .format(100000),
+                                  "Rp. 50.0000",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                   )),
                               onPressed: () {
-                                txt.text = NumberFormat.currency(
-                                        locale: 'id',
-                                        symbol: 'Rp. ',
-                                        decimalDigits: 0)
-                                    .format(100000);
+                                txt.text = "50000";
                               }),
                         ],
                       ),
@@ -324,7 +302,7 @@ class _TransaksiState extends State<Transaksi> {
                 children: <Widget>[
                   LimitedBox(
                     maxWidth: 150.0,
-                    child: TextFormField(
+                    child: TextField(
                       controller: txt,
                       keyboardType: TextInputType.number,
                       //Tidak bisa insert pakai currency
@@ -335,16 +313,22 @@ class _TransaksiState extends State<Transaksi> {
                       decoration: InputDecoration(
                         hintText: "Masukkan nominal",
                       ),
-                      // onChanged: (String totalAmount) {
-                      //   // setState(() {
-                      //   //   totalAmount = num.parse(value);
-                      //   // });
+                      onChanged: (String value) {
+                      
+                        setState(() {
+                        controller: txt.text;
+                          totalAmount = num.parse(value);
+                         
+                          getDonasiTotalAmount(totalAmount);
+                        });
+                      
+                        int g = num.parse(txt.text);
+                        getDonasiTotalAmount(txt.text);
+                      },
+                      // onChanged: (String totalAmount){
+                      //   int.parse(totalAmount);
                       //   getDonasiTotalAmount(totalAmount);
                       // },
-                      onChanged: (String totalAmount){
-                        int.parse(totalAmount);
-                        getDonasiTotalAmount(totalAmount);
-                      },
                     ),
                   ),
                 ],

@@ -34,7 +34,7 @@ class _DetailDonasiState extends State<DetailDonasi> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-
+    final progress = widget.danaTerkumpul;
     var delay = 1.5;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -110,7 +110,7 @@ class _DetailDonasiState extends State<DetailDonasi> {
                               borderRadius: BorderRadius.circular(5),
                               child: AnimatedContainer(
                                 height: 10,
-                                width: 350 * 0.5,
+                                width: progress * 0.5,
                                 duration: Duration(milliseconds: 500),
                                 decoration: BoxDecoration(
                                     color: Colors.lightGreen,
